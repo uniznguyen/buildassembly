@@ -3,8 +3,11 @@ import pandas as pd
 import sqlite3 as db
 import os
 
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 db_filename = os.path.join(BASE_DIR,'sqllite.db')
+# this is path to the sqlite db
+
 con = db.connect(db_filename)
 
 cursor1 = con.cursor()
