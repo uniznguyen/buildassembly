@@ -6,7 +6,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 db_filename = os.path.join(BASE_DIR,'sqllite.db')
-# this is path to sqlite db
+
 
 con = db.connect(db_filename)
 
