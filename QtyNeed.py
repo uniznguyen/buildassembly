@@ -18,6 +18,7 @@ Items = {}
 
 Items = dict([(row[0], row[1]) for row in cursor1.fetchall()])
 
+df2 = pd.DataFrame()
 df3 = pd.DataFrame()
 
 for item, qty in Items.items():
@@ -62,10 +63,10 @@ cursor5 = con.cursor()
 sql5 = """SELECT Total.ItemInventoryAssemblyLnItemInventoryRefFullName, Total.TotalQTYUsed, InventoryPart.QuantityOnHand, (Total.TotalQTYUsed - InventoryPart.QuantityOnHand) AS QtyShorted
 FROM Total INNER JOIN InventoryPart ON Total.ItemInventoryAssemblyLnItemInventoryRefFullName = InventoryPart.FullName
 WHERE Total.TotalQTYUsed > InventoryPart.QuantityOnHand"""
+
 cursor5.execute(sql5)
 df5 = pd.DataFrame(cursor5.fetchall(),columns=['InventoryPart', 'TotalQTYUsed', 'QtyOnHand', 'QtyShorted'])
 df5.to_sql('InventoryPart-Shorted',con,schema=None,if_exists='replace', index=True, index_label=None, chunksize=None)
-
 
 
 
