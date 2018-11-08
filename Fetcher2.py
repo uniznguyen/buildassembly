@@ -6,7 +6,7 @@ import os
 cn = pyodbc.connect('DSN=QuickBooks Data;')
 
 sql = "SELECT ROOT.FullName, Root.ItemInventoryAssemblyLnItemInventoryRefFullName, Root.ItemInventoryAssemblyLnQuantity FROM ItemInventoryAssemblyLine ROOT UNOPTIMIZED"
-sql2 = "SELECT FullName, (QuantityOnHand - QuantityOnSalesOrder) AS QuantityOnHand FROM ItemInventoryAssembly UNOPTIMIZED WHERE FullName Like '3-FG:8%552%' AND QuantityOnHand < 0"
+sql2 = "SELECT FullName, (QuantityOnHand - QuantityOnSalesOrder) AS QuantityOnHand FROM ItemInventoryAssembly UNOPTIMIZED WHERE FullName Like '3-FG:%8%541%' AND QuantityOnHand < 0"
 sql3 = "SELECT FullName, QuantityOnHand FROM ItemInventory UNOPTIMIZED"
 
 data = pd.read_sql(sql,cn)
